@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_head %}Главная страница{% endblock %}
+
+{% block header_text %}Текст. Тут должен быть текст. Но так как я не придумал какой, то тут должен быть текст{% endblock %}
+
+{% if tasks %}
+{% block task %}
+    {% for t in tasks %}
+        <div class="alert alert-warning mt-2">
+            <h3>{{ t.title }}</h3>
+            <p>{{ t.task }}</p>
+            <i>{{ t.pub_date }}</i>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% else %}
+<p>Нет задач</p>
+{% endif %}

@@ -1,0 +1,17 @@
+
+{% extends 'main.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_head %}Создать задачу для Ильи{% endblock %}
+
+{% block header_text %}Хочешь меня поправить? Сделай для меня задачу, напиши что изучить!{% endblock %}
+
+{% block task %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="title_task" placeholder="Заголовок задачи"  class="form-control" ><br />
+        <textarea name="text_task" cols="30" rows="10" placeholder="Введите подробный текст задачи" class="form-control" id="exampleFormControlTextarea1" ></textarea><br />
+        <button name="button_task" class="btn btn-primary mb-2">Отправить</button>
+    </form>
+{% endblock %}
