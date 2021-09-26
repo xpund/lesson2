@@ -1,0 +1,21 @@
+
+{% extends 'main.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_head %}Регистрация{% endblock %}
+
+{% block header_text %}Раз ты сюда зашёл, то пора создать себе аккаунт на моё сайте. Только после этого ты сможешь остаивть комментарии{% endblock %}
+
+{% block reg_auth %}
+    <h3>Регистрация</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {% for f in form %}
+            <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label> {{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <br/>
+    <button type="submit" class="btn btn-primary mb-2">Создать аккаунт</button>
+    </form>
+{% endblock %}

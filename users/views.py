@@ -1,17 +1,28 @@
-from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpRequest
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
+from django.contrib.auth.forms import UserCreationForm
+
+from users.forms import RegisterUserForm
 
 
 def auth(request):
-    return render(request, 'users/users.html')
+    context = {}
+    return render(request, 'users/users.html', context)
 
 
 def reg(request):
-    a = request.META.get('REMOTE_ADDR')
-    return HttpResponse("Регистрация для, " + str(a))
+    form = RegisterUserForm
+    if request.method == "POST":
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('users:auth')
+
+    context = {'form': form}
+    return render(request, 'users/reg.html', context)
 
 
 def recover_pass(request):
-    a = request.META.get('REMOTE_ADDR')
-    return HttpResponse("Восстановить пароль для, " + str(a))
+    context = {}
+    return render(request, 'users/recover_pass.html', context)

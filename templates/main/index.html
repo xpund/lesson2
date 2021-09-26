@@ -10,7 +10,7 @@
 {% block task %}
     {% for t in tasks %}
         <div class="alert alert-warning mt-2">
-            <h3>{{ t.title }}</h3>
+            <h3>#{{ t.id }} | {{ t.title }}</h3>
             <p>{{ t.task }}</p>
             <i>{{ t.pub_date }}</i>
         </div>
