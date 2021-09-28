@@ -1,0 +1,23 @@
+{% extends 'blog.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header_head %}Это блог{% endblock %}
+
+{% block header_text %}Текст. Тут должен быть текст. Но так как я не придумал какой, то тут должен быть текст{% endblock %}
+
+{% if art %}
+    {% block article %}
+
+        <div class="alert alert-warning mt-2"><h3>{{ art.title }}</h3>
+       <p> {{ art.text_article }}</p>
+       <br /> <i>{{ art.pub_date }} </i>
+        </div>
+
+        {% block comment %}{% endblock %}
+        {% endblock %}
+{% else %}
+    <p>Нет статей</p>
+
+
+{% endif %}

@@ -1,7 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404, HttpRequest, HttpResponseRedirect
-from django.urls import reverse
-
 from .models import Task
 from .forms import TaskForm
 

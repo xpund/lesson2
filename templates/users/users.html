@@ -8,11 +8,14 @@
 {% block header_text %}Ну ты это - заходи если шо{% endblock %}
 
 {% block reg_auth %}
+    {% for m in messages %}
+       <p><span style="font: bold">{{ m }}</p>
+    {% endfor %}
     <h3>Авторизация</h3>
-    <form action="">
-    {% csrf_token %}
-        <input type="text" name="login" placeholder="Введите логин"> <br/>
-        <input type="password" name="pass" placeholder="Пароль"> <br/>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Введите логин"> <br/>
+        <input type="password" name="password" placeholder="Пароль"> <br/>
         <button type="submit" name="enter_auth">Войти</button> <br/>
         <a href="{% url 'users:recover_pass' %}">Восстановить пароль</a> | <a href="{% url 'users:reg' %}">Зарегистрироваться</a>
     </form>
