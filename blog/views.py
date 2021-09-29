@@ -15,5 +15,7 @@ def article(request, article_id):
     except:
         raise Http404("Статья не найдена")
 
-    context = {'title': ar.title, 'art': ar}
+    lastest_comment_list = ar.comment_set.order_by("-id")[:10]
+
+    context = {'title': ar.title, 'art': ar, 'last_comment': lastest_comment_list}
     return render(request, 'blog/art.html', context)

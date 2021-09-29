@@ -5,7 +5,7 @@ from django.utils import timezone
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     task = models.TextField('Описание')
-    pub_date = models.DateTimeField('Дата публикации', blank=True, null=True, default=timezone.now())
+    pub_date = models.DateTimeField('Дата публикации', blank=True, null=True, default=timezone.now)
 
     def __str__(self):
         return self.title
